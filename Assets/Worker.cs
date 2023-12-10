@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Worker : MonoBehaviour
@@ -6,6 +7,15 @@ public class Worker : MonoBehaviour
 	public int count;
 	public int price;
 	public int cps;
+
+	public TMP_Text countText;
+	public TMP_Text priceText;
+
+	void Update()
+	{
+		countText.text = count.ToString();
+		priceText.text = "price:" + price;
+	}
 
 	void Start()
 	{
