@@ -1,11 +1,18 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public TMP_Text clicksText;
     public int clicks;
 
-    public void EndGame()
+    void Update()
     {
-        Debug.Log("Game Over");
+        clicksText.text = clicks.ToString();
+    }
+
+    public void AddClick()
+    {
+        clicks++;
     }
 }
