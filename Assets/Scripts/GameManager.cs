@@ -17,6 +17,16 @@ public class GameManager : MonoBehaviour
         clicksText.text = clicks.ToString();
     }
 
+    void Start()
+    {
+        clicks = PlayerPrefs.GetInt("clicks");
+    }
+
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("clicks", clicks);
+    }
+
     public void BuyGrandma()
     {
         grandmaCount++;
