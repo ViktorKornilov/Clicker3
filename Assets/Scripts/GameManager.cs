@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     public int grandmaPrice;
     public float clickTimer;
 
+    void Start()
+    {
+        clicks = PlayerPrefs.GetInt("clicks");
+    }
+
     void Update()
     {
         // UPDATE UI
@@ -22,6 +27,11 @@ public class GameManager : MonoBehaviour
             clicks += grandmas;
             clickTimer = 0;
         }
+    }
+
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("clicks",clicks);
     }
 
     public void AddClick()
