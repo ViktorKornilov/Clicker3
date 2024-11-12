@@ -7,9 +7,10 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text grandmaCountText;
     public TMP_Text clicksText;
+    public TMP_Text cpsText;
     int grandmaCount;
-    int grandmaPrice;
-
+    public int grandmaPrice = 10;
+    public int cps;
     public float clickTimer;
 
     void Start()
@@ -22,11 +23,13 @@ public class GameManager : MonoBehaviour
         clickTimer += Time.deltaTime;
         if (clickTimer >= 1)
         {
-            AddClick();
+            clicks += cps;
             clickTimer = 0;
         }
 
-        clicksText.text = clicks.ToString();
+        // Update UI
+        clicksText.text = clicks.ToString("N0");
+        cpsText.text = $"CPS: {cps}";
     }
 
     void OnApplicationQuit()
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
     void Save()
     {
         PlayerPrefs.SetInt("clicks", clicks);
+        PlayerPrefs.SetInt("cps", cps);
         PlayerPrefs.SetInt( "grandmaCount", grandmaCount);
         PlayerPrefs.SetInt( "grandmaPrice", grandmaPrice);
     }
@@ -44,8 +48,9 @@ public class GameManager : MonoBehaviour
     void Load()
     {
         clicks = PlayerPrefs.GetInt("clicks");
+        cps = PlayerPrefs.GetInt("cps");
         grandmaCount = PlayerPrefs.GetInt("grandmaCount");
-        grandmaPrice = PlayerPrefs.GetInt("grandmaPrice");
+        grandmaPrice = PlayerPrefs.GetInt("grandmaPrice",grandmaPrice);
     }
 
 
@@ -57,6 +62,7 @@ public class GameManager : MonoBehaviour
     public void BuyGrandma()
     {
         grandmaCount++;
+        cps += 1;
         grandmaCountText.text = grandmaCount.ToString();
     }
 }
