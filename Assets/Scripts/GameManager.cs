@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class GameManager : MonoBehaviour
     public int grandmaPrice = 10;
     public int cps;
     public float clickTimer;
+    public int clickPower = 1;
+
+    public Button grandmaButton;
+    public Button upgradeButton;
 
     void Start()
     {
@@ -30,6 +35,10 @@ public class GameManager : MonoBehaviour
         // Update UI
         clicksText.text = clicks.ToString("N0");
         cpsText.text = $"CPS: {cps}";
+
+        // Enable buttons
+        grandmaButton.interactable = clicks >= grandmaPrice;
+        upgradeButton.interactable = clicks >= 50;
     }
 
     void OnApplicationQuit()
@@ -56,13 +65,20 @@ public class GameManager : MonoBehaviour
 
     public void AddClick()
     {
-        clicks++;
+        clicks += clickPower;
     }
 
     public void BuyGrandma()
     {
         grandmaCount++;
         cps += 1;
+        clicks -= grandmaPrice;
         grandmaCountText.text = grandmaCount.ToString();
+    }
+
+    public void BuyClickUpgrade()
+    {
+        clickPower *= 2;
+        clicks -= 50;
     }
 }
