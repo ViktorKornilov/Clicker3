@@ -352,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d88ffa08a4ca4540a010164b465d00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 814840578}
   onClick:
     m_PersistentCalls:
       m_Calls:
@@ -391,6 +392,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  nextCookie:
+  - {fileID: 21300000, guid: d7e6591dec7694159bc24edef9df5386, type: 3}
+  - {fileID: 21300000, guid: 3b0ce87b0641a4d5cb7ccc08545982c7, type: 3}
+  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  clickGoal: 640000002c010000f4010000
+  renderer: {fileID: 125659398}
 --- !u!224 &139928910 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3063800735225702139, guid: 31b2aa6ac0c10413896eb71f51011c7d, type: 3}
@@ -715,6 +722,7 @@ MonoBehaviour:
   grandmaPrice: 10
   clickTimer: 0
   upgradeButton: {fileID: 139928911}
+  clickPower: 1
 --- !u!1 &881736691
 GameObject:
   m_ObjectHideFlags: 0

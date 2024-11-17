@@ -3,7 +3,12 @@ using UnityEngine.Events;
 
 public class Cookie : MonoBehaviour
 {
+	public GameManager manager;
 	public UnityEvent onClick;
+	public Sprite[] nextCookie;
+	public int[] clickGoal;
+	public SpriteRenderer renderer;
+	int skinIndex;
 
 	void Update()
 	{
@@ -11,6 +16,13 @@ public class Cookie : MonoBehaviour
 		{
 			transform.localScale -= Vector3.one * 0.01f;
 		}
+
+
+		if (skinIndex < clickGoal.Length && manager.clicks > clickGoal[skinIndex])
+		{
+			renderer.sprite = nextCookie[skinIndex++];
+		}
+
 
 	}
 
