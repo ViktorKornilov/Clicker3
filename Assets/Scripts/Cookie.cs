@@ -21,6 +21,8 @@ public class Cookie : MonoBehaviour
 		if (skinIndex < clickGoal.Length && manager.clicks > clickGoal[skinIndex])
 		{
 			renderer.sprite = nextCookie[skinIndex++];
+			gameObject.SetActive(false);
+			gameObject.SetActive(true);
 		}
 
 
